@@ -1,0 +1,23 @@
+cluster:
+  name: runova-mesh-home
+  head_node: pc1
+  ray_port: 6379
+
+nodes:
+  pc1:
+    role: head+worker
+    address: 192.168.1.101
+    enabled: true
+  pc2:
+    role: worker
+    address: 192.168.1.102
+    enabled: true
+  pc3:
+    role: worker
+    address: 192.168.1.103
+    enabled: true
+
+policy:
+  allow_head_as_worker: true
+  prefer_locality: true
+  minimum_network_mbps_for_tensor_parallel: 10000

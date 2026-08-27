@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "runova-mesh"
+version = "0.1.0"
+description = "Distributed compute fabric for small heterogeneous clusters"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "psutil>=6.0",
+  "PyYAML>=6.0.2",
+]
+
+[project.optional-dependencies]
+ray = ["ray[default]>=2.40"]
+dev = ["pytest>=8.0", "ruff>=0.9"]
+
+[project.scripts]
+runova-mesh = "runova_mesh.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
